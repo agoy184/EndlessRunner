@@ -1,5 +1,10 @@
+// Abel Goy 
+// Olive Runner 
+// * hours spent on project 
+// Creative tilt justification:
+
 let config = {
-    type: Phaser.WEBGL,
+    type: Phaser.CANVAS,
     width: 640,
     height: 480,
     backgroundColor: '#35A7FF',
@@ -15,8 +20,8 @@ let config = {
         }
       }
     },
-    scene: [ Play ]
-  }
+    scene:  [ Menu, Play ]
+}
 
 let game = new Phaser.Game(config);
 
