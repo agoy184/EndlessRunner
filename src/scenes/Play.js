@@ -6,9 +6,13 @@ class Play extends Phaser.Scene {
     preload() {
         this.load.image('knife', './assets/Knife.png');
         this.load.image('gran', './assets/granny.png');
+        this.load.image('road', './assets/Road.png');
     }
 
     create() {
+        // tile sprite background
+        this.road = this.add.tileSprite(0, 0, 640, 480, 'road').setOrigin(0, 0);
+
         // Game Over flag
         this.gameOver = false;
 
@@ -29,6 +33,7 @@ class Play extends Phaser.Scene {
     }
 
     update() {
+        this.road.tilePositionX += 4;
         if (!this.gameOver) {
             this.granny.update();
             this.l1knife.update();
