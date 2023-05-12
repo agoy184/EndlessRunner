@@ -4,7 +4,7 @@ class Play extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('knife', './assets/Knife.png');
+        this.load.image('car', './assets/redCar.png');
         this.load.image('gran', './assets/granny.png');
         this.load.image('road', './assets/Road.png');
     }
@@ -20,9 +20,9 @@ class Play extends Phaser.Scene {
         this.granny = new Player(this, game.config.width/4, game.config.height/2, 'gran').setOrigin(0.5, 0);
 
         // Create obstacles
-        this.l1knife = new Obstacle(this, game.config.width/2, game.config.height/4, 'knife').setOrigin(0.5, 0);
-        this.l2knife = new Obstacle(this, game.config.width/2, game.config.height/3, 'knife').setOrigin(0.5, 0);
-        this.l3knife = new Obstacle(this, game.config.width/2, game.config.height/2, 'knife').setOrigin(0.5, 0);
+        this.l1car = new Obstacle(this, game.config.width/2, game.config.height/4, 'car').setOrigin(0.5, 0);
+        this.l2car = new Obstacle(this, game.config.width/2, game.config.height/3, 'car').setOrigin(0.5, 0);
+        this.l3car = new Obstacle(this, game.config.width/2, game.config.height/2, 'car').setOrigin(0.5, 0);
 
         // Define keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -36,9 +36,9 @@ class Play extends Phaser.Scene {
         this.road.tilePositionX += 4;
         if (!this.gameOver) {
             this.granny.update();
-            this.l1knife.update();
-            this.l2knife.update();
-            this.l3knife.update();
+            this.l1car.update();
+            this.l2car.update();
+            this.l3car.update();
 
         }
     }      
