@@ -20,9 +20,12 @@ class Play extends Phaser.Scene {
         this.granny = new Player(this, game.config.width/4, game.config.height/2, 'gran').setOrigin(0.5, 0);
 
         // Create obstacles
-        this.l1car = new Obstacle(this, game.config.width/2, game.config.height/4, 'car').setOrigin(0.5, 0);
-        this.l2car = new Obstacle(this, game.config.width/2, game.config.height/3, 'car').setOrigin(0.5, 0);
+        this.l1car = new Obstacle(this, game.config.width/2, game.config.height/4 + 25, 'car').setOrigin(0.5, 0);
+        this.l2car = new Obstacle(this, game.config.width/2, game.config.height/9, 'car').setOrigin(0.5, 0);
         this.l3car = new Obstacle(this, game.config.width/2, game.config.height/2, 'car').setOrigin(0.5, 0);
+        this.l1car.setScale(.75);
+        this.l2car.setScale(.75);
+        this.l3car.setScale(.75);
 
         // Define keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
