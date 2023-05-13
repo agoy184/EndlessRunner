@@ -4,7 +4,7 @@
 // Creative tilt justification:
 
 let config = {
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,
     width: 640,
     height: 480,
     backgroundColor: '#35A7FF',
@@ -13,7 +13,7 @@ let config = {
     physics: {
       default: 'arcade',
       arcade: {
-        debug: false,
+        debug: true,
         gravity: {
           x:0,
           y:0
@@ -27,7 +27,7 @@ let game = new Phaser.Game(config);
 
 // Reserve keyboard vars
 let keySPACE;
-let keyW, keyA, keyS, keyD;
+let keyW, keyA, keyS, keyD, keyR;
 
 // Set UI Sizes
 let borderUISize = game.config.height / 15;

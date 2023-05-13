@@ -22,7 +22,7 @@ class Menu extends Phaser.Scene{
         }
 
         // menu text
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Olive Runner', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Granny Runner', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'Use W and S keys to move up and down', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'Use A and D keys to move left and right', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press A for Novice or D for Expert', menuConfig).setOrigin(0.5);
