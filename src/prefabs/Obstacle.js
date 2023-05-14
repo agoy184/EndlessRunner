@@ -8,9 +8,7 @@ class Obstacle extends Phaser.GameObjects.Sprite {
     update(){
         this.x -= this.moveSpeed;
         if(this.x <= 0 - this.width) {
-            this.x = game.config.width + 100;
-            // random speed
-            //this.moveSpeed = Math.floor(Math.random() * 3) + 1;
+            this.x = game.config.width +  Math.floor(Math.random() * 3) * 100;  // Random posiiton respawn of cars creates an escalating challenge
         }
     }
 
