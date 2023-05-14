@@ -14,6 +14,7 @@ class Play extends Phaser.Scene {
 
         // SFX
         this.load.audio('scream', './assets/WilhelmScream.mp3');
+        this.load.audio('crash', './assets/carCrash.mp3');        
     }
 
     create() {
@@ -31,6 +32,7 @@ class Play extends Phaser.Scene {
         this.l2car = new Obstacle(this, game.config.width, game.config.height/4 + 30, 'car').setOrigin(0, 0);
         this.l3car = new Obstacle(this, game.config.width, game.config.height/2 + 10, 'car').setOrigin(0, 0);
         this.l4car = new Obstacle(this, game.config.width/2, game.config.height/2 + 100, 'car').setOrigin(0, 0);
+        
         //debug
         //this.physics.add.image(400, 100, 'car'); 
 
@@ -72,6 +74,7 @@ class Play extends Phaser.Scene {
         }
         var music = this.sound.add('bg_music', soundConfig);
         music.play();
+        this.screamCheck = 0;
     }
 
     update() {
@@ -86,7 +89,12 @@ class Play extends Phaser.Scene {
 
         if(this.checkCollision(this.l1car, this.granny) || this.checkCollision(this.l2car, this.granny) || this.checkCollision(this.l3car, this.granny) || this.checkCollision(this.l4car, this.granny)) {
             this.gameOver = true;
-            this.sound.stopAll();//stop music
+            this.sound.stopByKey('bg_music');//stop music
+            if (this.screamCheck == 0) {
+                this.sound.play('crash');
+                this.sound.play('scream');
+                this.screamCheck++;
+            }
             this.goUI.setVisible(true);
             this.rUI.setVisible(true);    
         }

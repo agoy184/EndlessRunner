@@ -4,7 +4,7 @@ class Menu extends Phaser.Scene{
     }
 
     preload() {
-        this.load.audio('sfx_select', './assets/WilhelmScream.mp3');
+        this.load.audio('sfx_select', './assets/pop.wav');
     }
 
     create(){
@@ -22,13 +22,15 @@ class Menu extends Phaser.Scene{
         }
 
         // menu text
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Granny Runner', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use W and S keys to move up and down', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use A and D keys to move left and right', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press A to start or D to see the credits', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/4, 'Granny Runner', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'Press A to start the game,', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, 3.25*game.config.height/5, 'W to see How to play,', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, 4*game.config.height/5, 'and D to see the credits', menuConfig).setOrigin(0.5);
+        
    
         // define keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     }
 
@@ -40,6 +42,11 @@ class Menu extends Phaser.Scene{
             }
             this.sound.play('sfx_select');
             this.scene.start("playScene");    
+          }
+          if (Phaser.Input.Keyboard.JustDown(keyW)) {
+            // HowToPlay
+            this.sound.play('sfx_select');
+            this.scene.start("howtoScene");    
           }
           if (Phaser.Input.Keyboard.JustDown(keyD)) {
             // Credits
