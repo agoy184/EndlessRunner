@@ -13,7 +13,7 @@ class HowToPlay extends Phaser.Scene {
             fontSize: '16px',
             backgroundColor: '#F41D1D',
             color: '#FFFFFF',
-            align: 'left',
+            align: 'center',
             padding: {
                 top: 5,
                 bottom: 5,
@@ -25,9 +25,9 @@ class HowToPlay extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/9, 'How To Play:', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 2*game.config.height/9, 'Use W and S keys to move the granny up and down,', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 3*game.config.height/9, 'and use A and D keys to move the granny left and right', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, 4*game.config.height/9, 'Avoid touching the cars or else you will lose', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, 5*game.config.height/9, 'Dont get squished by the fire hydrants and the left side of the screen either', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, 6*game.config.height/9, 'Also, Watch out for the speedy cyclist', menuConfig).setOrigin(0.5);  
+        this.add.text(game.config.width/2, 4*game.config.height/9, 'Avoid touching the cars or else you will lose!\nUse the sidewalks when you cant avoid the cars', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, 5*game.config.height/9, 'Dont use the sidewalks too much though!', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, 6*game.config.height/9, 'Fire hydrants on the sidewalks can block you,\nand even squish you if youre too close to the left side of the screen!', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 7*game.config.height/9, 'See how many seconds you can last while avoiding all of the obstacles!', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 8*game.config.height/9, 'Press S to go back to the starting menu', menuConfig).setOrigin(0.5);
 
