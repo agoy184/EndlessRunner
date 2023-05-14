@@ -27,7 +27,7 @@ class Credits extends Phaser.Scene {
         this.add.text(game.config.width/2, 3*game.config.height/9, 'Designer: Abel Goy', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 4*game.config.height/9, 'Sprites made in Aseprite by: Abel Goy', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 5*game.config.height/9, 'Music: "Sunshine" by Kevin Macleod', menuConfig).setOrigin(0.5);        
-        this.add.text(game.config.width/2, 6.5*game.config.height/9, 'Sound Effects: \nCar crash: https://freesound.org/people/squareal/sounds/237375/\nScream: https://archive.org/details/WilhelmScreamSample', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, 6.5*game.config.height/9, 'Sound Effects: \nCar crash: https://freesound.org/people/squareal/sounds/237375/\nScream: https://archive.org/details/WilhelmScreamSample\nPop Select: https://freesound.org/people/Debsound/sounds/320549/', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 8*game.config.height/9, 'Press S to go back to the starting menu', menuConfig).setOrigin(0.5);
 
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);

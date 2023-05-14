@@ -31,10 +31,7 @@ class Play extends Phaser.Scene {
         this.l1car = new Obstacle(this, game.config.width, game.config.height/8, 'car').setOrigin(0, 0);
         this.l2car = new Obstacle(this, game.config.width, game.config.height/4 + 30, 'car').setOrigin(0, 0);
         this.l3car = new Obstacle(this, game.config.width, game.config.height/2 + 10, 'car').setOrigin(0, 0);
-        this.l4car = new Obstacle(this, game.config.width/2, game.config.height/2 + 100, 'car').setOrigin(0, 0);
-        
-        //debug
-        //this.physics.add.image(400, 100, 'car'); 
+        this.l4car = new Obstacle(this, game.config.width, game.config.height/2 + 100, 'car').setOrigin(0, 0);
 
         // Define keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -44,7 +41,7 @@ class Play extends Phaser.Scene {
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);        
 
         // Text stuff
-        let textConfig = { 
+        var textConfig = { 
             fontFamily: 'font1',
         fontSize: '28px',
         backgroundColor: '#F4442E',
@@ -62,6 +59,10 @@ class Play extends Phaser.Scene {
         this.rUI = this.add.text(game.config.width/2, game.config.height/3 + 64, 'Press (R) to Restart', textConfig).setOrigin(0.5);
         this.goUI.setVisible(false);
         this.rUI.setVisible(false);
+
+        // Timer          
+        this.timeElapsed = 0;
+        this.timeUI = this.add.text(8*game.config.width/9, game.config.height/9, this.timeElapsed/60, textConfig).setOrigin(0.5);
 
         let soundConfig = {
             mute: false,
@@ -85,6 +86,8 @@ class Play extends Phaser.Scene {
             this.l2car.update();
             this.l3car.update();
             this.l4car.update();
+            this.timeElapsed++;
+            this.timeUI.text = Math.floor(this.timeElapsed/60);
         }
 
         if(this.checkCollision(this.l1car, this.granny) || this.checkCollision(this.l2car, this.granny) || this.checkCollision(this.l3car, this.granny) || this.checkCollision(this.l4car, this.granny)) {
