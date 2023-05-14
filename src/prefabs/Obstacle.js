@@ -10,7 +10,7 @@ class Obstacle extends Phaser.GameObjects.Sprite {
         if(this.x <= 0 - this.width) {
             this.x = game.config.width + 100;
             // random speed
-            this.moveSpeed = Math.floor(Math.random() * 3) + 1;
+            //this.moveSpeed = Math.floor(Math.random() * 3) + 1;
         }
     }
 

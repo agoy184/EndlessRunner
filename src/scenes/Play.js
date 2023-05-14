@@ -8,6 +8,7 @@ class Play extends Phaser.Scene {
         this.load.image('car', './assets/redCar.png');
         this.load.image('gran', './assets/granny.png');
         this.load.image('road', './assets/Road.png');
+        this.load.image('hydrant', './assets/hydrant.png');
 
         // Music
         this.load.audio('bg_music', './assets/Sunshine.mp3');
@@ -28,17 +29,23 @@ class Play extends Phaser.Scene {
         this.granny = new Player(this, game.config.width/4, game.config.height/2, 'gran').setOrigin(0, 0);
 
         // Create obstacles
-        this.l1car = new Obstacle(this, game.config.width, game.config.height/8, 'car').setOrigin(0, 0);
-        this.l2car = new Obstacle(this, game.config.width, game.config.height/4 + 30, 'car').setOrigin(0, 0);
-        this.l3car = new Obstacle(this, game.config.width, game.config.height/2 + 10, 'car').setOrigin(0, 0);
+        this.l1car = new Obstacle(this, game.config.width+50, game.config.height/8, 'car').setOrigin(0, 0);
+        this.l2car = new Obstacle(this, game.config.width+100, game.config.height/4 + 30, 'car').setOrigin(0, 0);
+        this.l3car = new Obstacle(this, game.config.width+70, game.config.height/2 + 10, 'car').setOrigin(0, 0);
         this.l4car = new Obstacle(this, game.config.width, game.config.height/2 + 100, 'car').setOrigin(0, 0);
+
+        this.hydrant1 = new Obstacle(this, game.config.width, 0, 'hydrant').setOrigin(0, 0);
+        this.hydrant2 = new Obstacle(this, game.config.width, 8*game.config.height/9, 'hydrant').setOrigin(0, 0);
+        
 
         // Define keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);        
+        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+        
+        
 
         // Text stuff
         var textConfig = { 
@@ -86,6 +93,8 @@ class Play extends Phaser.Scene {
             this.l2car.update();
             this.l3car.update();
             this.l4car.update();
+            this.hydrant1.update();
+            this.hydrant2.update();
             this.timeElapsed++;
             this.timeUI.text = Math.floor(this.timeElapsed/60);
         }
@@ -100,6 +109,23 @@ class Play extends Phaser.Scene {
             }
             this.goUI.setVisible(true);
             this.rUI.setVisible(true);    
+        }
+
+        if(this.checkCollision(this.hydrant1, this.granny) || this.checkCollision(this.hydrant2, this.granny)) {
+            if (keyD.isDown) {
+                this.granny.x -= this.hydrant1.moveSpeed;
+            }
+            this.granny.x -= this.hydrant1.moveSpeed;
+            if(this.granny.x <= 0) {
+                this.gameOver = true;
+                this.sound.stopByKey('bg_music');//stop music
+                if (this.screamCheck == 0) {
+                    this.sound.play('scream');
+                    this.screamCheck++;
+                }
+                this.goUI.setVisible(true);
+                this.rUI.setVisible(true);    
+            }
         }
 
         if(Phaser.Input.Keyboard.JustDown(keyR)){
