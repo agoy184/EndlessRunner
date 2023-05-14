@@ -23,6 +23,7 @@ class Play extends Phaser.Scene {
         this.l1car = new Obstacle(this, game.config.width, game.config.height/8, 'car').setOrigin(0, 0);
         this.l2car = new Obstacle(this, game.config.width, game.config.height/4 + 30, 'car').setOrigin(0, 0);
         this.l3car = new Obstacle(this, game.config.width, game.config.height/2 + 10, 'car').setOrigin(0, 0);
+        this.l4car = new Obstacle(this, game.config.width/2, game.config.height/2 + 100, 'car').setOrigin(0, 0);
         //debug
         //this.physics.add.image(400, 100, 'car'); 
 
@@ -61,9 +62,10 @@ class Play extends Phaser.Scene {
             this.l1car.update();
             this.l2car.update();
             this.l3car.update();
+            this.l4car.update();
         }
 
-        if(this.checkCollision(this.l1car, this.granny) || this.checkCollision(this.l2car, this.granny) || this.checkCollision(this.l3car, this.granny)) {
+        if(this.checkCollision(this.l1car, this.granny) || this.checkCollision(this.l2car, this.granny) || this.checkCollision(this.l3car, this.granny) || this.checkCollision(this.l4car, this.granny)) {
             this.gameOver = true;
             this.goUI.setVisible(true);
             this.rUI.setVisible(true);    

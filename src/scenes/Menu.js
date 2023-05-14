@@ -36,7 +36,7 @@ class Menu extends Phaser.Scene{
         if (Phaser.Input.Keyboard.JustDown(keyA)) {
             // Novice mode
             game.settings = {
-              obstacleSpeed: 3,
+              obstacleSpeed: 4,
             }
             this.sound.play('sfx_select');
             this.scene.start("playScene");    
@@ -44,7 +44,7 @@ class Menu extends Phaser.Scene{
           if (Phaser.Input.Keyboard.JustDown(keyD)) {
             // Expert mode
             game.settings = {
-              obstacleSpeed: 4,
+              obstacleSpeed: 7,
             }
             this.sound.play('sfx_select');
             this.scene.start("playScene");    
