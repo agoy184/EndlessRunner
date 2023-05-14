@@ -25,7 +25,7 @@ class Menu extends Phaser.Scene{
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Granny Runner', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'Use W and S keys to move up and down', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'Use A and D keys to move left and right', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press A for Novice or D for Expert', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press A to start or D to see the credits', menuConfig).setOrigin(0.5);
    
         // define keys
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -42,12 +42,9 @@ class Menu extends Phaser.Scene{
             this.scene.start("playScene");    
           }
           if (Phaser.Input.Keyboard.JustDown(keyD)) {
-            // Expert mode
-            game.settings = {
-              obstacleSpeed: 7,
-            }
+            // Credits
             this.sound.play('sfx_select');
-            this.scene.start("playScene");    
+            this.scene.start("creditsScene");    
           }
           
     }
