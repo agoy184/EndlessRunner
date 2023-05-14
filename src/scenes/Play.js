@@ -4,9 +4,16 @@ class Play extends Phaser.Scene {
     }
 
     preload() {
+        // Sprites
         this.load.image('car', './assets/redCar.png');
         this.load.image('gran', './assets/granny.png');
         this.load.image('road', './assets/Road.png');
+
+        // Music
+        this.load.audio('bg_music', './assets/Sunshine.mp3');
+
+        // SFX
+        this.load.audio('scream', './assets/WilhelmScream.mp3');
     }
 
     create() {
@@ -53,6 +60,18 @@ class Play extends Phaser.Scene {
         this.rUI = this.add.text(game.config.width/2, game.config.height/3 + 64, 'Press (R) to Restart', textConfig).setOrigin(0.5);
         this.goUI.setVisible(false);
         this.rUI.setVisible(false);
+
+        let soundConfig = {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0,
+        }
+        var music = this.sound.add('bg_music', soundConfig);
+        music.play();
     }
 
     update() {
@@ -67,11 +86,13 @@ class Play extends Phaser.Scene {
 
         if(this.checkCollision(this.l1car, this.granny) || this.checkCollision(this.l2car, this.granny) || this.checkCollision(this.l3car, this.granny) || this.checkCollision(this.l4car, this.granny)) {
             this.gameOver = true;
+            this.sound.stopAll();//stop music
             this.goUI.setVisible(true);
             this.rUI.setVisible(true);    
         }
 
         if(Phaser.Input.Keyboard.JustDown(keyR)){
+            this.sound.stopAll();//stop music
             this.scene.restart();
         }
     }
